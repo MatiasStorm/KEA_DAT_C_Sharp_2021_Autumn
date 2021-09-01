@@ -13,11 +13,11 @@ namespace zipCodeTranlatorErrorPrunin
             string webData = wc.DownloadString("https://services.datafordeler.dk/DAR/DAR/1/rest/postnummer?postnr="+zipCode);
             try 
             {
-                Console.Write("\nPostcode: " + zipCode + " City: " + webData.Substring(webData.IndexOf("navn") + 7, webData.IndexOf("postnr") - webData.IndexOf("navn") -3 -7));
+                Console.WriteLine("\nPostcode: " + zipCode + " City: " + webData.Substring(webData.IndexOf("navn") + 7, webData.IndexOf("postnr") - webData.IndexOf("navn") -3 -7));
             }
             catch (ArgumentOutOfRangeException)
             {
-                Console.Write("Postnummeret er ugyldigt.");
+                Console.WriteLine("Postnummeret er ugyldigt.");
             }
         }
     }
