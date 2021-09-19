@@ -18,6 +18,7 @@ namespace valuta
         public void run()
         {
             Console.Write("Amount of DKK: ");
+            string input = Console.ReadLine();
             double dkk = Convert.ToDouble( Console.ReadLine() );
 
             string currencyCode = this.pickCurrency();
@@ -29,12 +30,16 @@ namespace valuta
 
         private void loadCurrencies(){
             Console.WriteLine("Fetching latest currency data...\n");
+
             WebClient webClient = new WebClient();
             string data = webClient.DownloadString(url);
+            
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(data);
+
             string code, description;
             double rate;
+            
             foreach(XmlNode node in doc.DocumentElement.ChildNodes[0].ChildNodes){
                 code = node.Attributes["code"].InnerText;
                 description = node.Attributes["desc"].InnerText;
